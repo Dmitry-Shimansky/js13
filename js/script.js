@@ -1,3 +1,4 @@
+// lesson01
 let money = 2400;
 let income = 500;
 let addExpenses = 'комуналка, стиралка, палка, металка, такси, каталка';
@@ -19,6 +20,7 @@ console.log(addExpenses.toLowerCase().split(', '));
 let budgetDay = 100
 console.log('budgetDay = ', budgetDay);
 
+// lesson02
 money = +prompt('Ваш месячный доход ?');
 addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую');
 deposit = confirm('Есть ли у вас депозит в банке?');
