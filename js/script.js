@@ -10,15 +10,12 @@ let expenses2;
 let amount1;
 let amount2;
 
-console.log(typeof money);
-console.log(typeof income);
-console.log(typeof deposit);
+showTypeOf(money);
+showTypeOf(income);
+showTypeOf(deposit);
 
 console.log(`Период равен ${period} месяцев`);
 console.log(`Цель заработать ${mission} долларов`);
-console.log(addExpenses.toLowerCase().split(', '));
-let budgetDay = 100
-console.log('budgetDay = ', budgetDay);
 
 // lesson02
 money = +prompt('Ваш месячный доход ?');
@@ -29,10 +26,8 @@ expenses2 = prompt('Введите обязательную статью рас�
 amount1 = +prompt('Во сколько это обойдется?');
 amount2 = +prompt('Во сколько это обойдется?');
 
-let budgetMonth = money - (amount1 + amount2);
-console.log('mission = ', Math.ceil(mission/budgetMonth));
-budgetDay = Math.floor(budgetMonth/30);
-console.log('budgetDay', budgetDay)
+let budgetDay = Math.floor(getAccumulatedMonth()/30);
+console.log('budgetDay = ', budgetDay)
 
 switch (true) {
     case budgetDay >= 1200:
@@ -46,3 +41,36 @@ switch (true) {
         break;
     default: alert('Что то пошло не так');
 }
+
+//lesson04
+function getAddExpenses() {
+    const expensesArray = addExpenses.toLowerCase().split(', ');
+    console.log(expensesArray);
+    return expensesArray;
+}
+
+function showTypeOf(variable) {
+    console.log(typeof variable);
+}
+
+function getExpensesMonth() {
+    const expensesMonth = amount1 + amount2;
+    console.log('expensesMonth = ', expensesMonth);
+    return expensesMonth;
+}
+
+function getAccumulatedMonth() {
+    const accumulatedMonth = money - getExpensesMonth();
+    console.log('accumulatedMonth = ', accumulatedMonth);
+    return accumulatedMonth;
+}
+
+const accumulatedMonth = getAccumulatedMonth();
+
+function getTargetMonth() {
+    const goal = Math.ceil(mission/accumulatedMonth)
+    console.log('targetMonth = ', goal);
+    return goal;
+}
+
+getTargetMonth();
