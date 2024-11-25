@@ -55,6 +55,7 @@ class AppData {
         addAdditionalIncomeBtn.setAttribute('disabled', 'true');
         calcBtn.style.display = 'none';
         cancelBtn.style.display = 'block';
+        periodSelect.removeAttribute('disabled');
 
         this.budget = +salaryInput.value;
         this.getExpenses();
@@ -234,6 +235,7 @@ class AppData {
 const appData = new AppData();
 
 calcBtn.setAttribute('disabled', 'true');
+periodSelect.setAttribute('disabled', 'true');
 appData.eventListeners();
 
 console.log(appData);
