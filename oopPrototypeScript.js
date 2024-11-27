@@ -18,11 +18,11 @@ document.addEventListener('DOMContentLoaded', () => {
         additionalExpensesInput = document.querySelector('.additional_expenses input'),
         targetInput = document.querySelector('.target input'),
         periodSelect = document.querySelector('.period-select'),
-        allTextInputsData = document.querySelectorAll('.data input[type=text]'),
         allTextInputsResult = document.querySelectorAll('.result input[type=text]'),
         cancelBtn = document.getElementById('cancel');
     let incomeItems = document.querySelectorAll('.income-items'),
-        expensesItems = document.querySelectorAll('.expenses-items');
+        expensesItems = document.querySelectorAll('.expenses-items'),
+        allTextInputsData = document.querySelectorAll('.data input[type=text]');
 
 
     const AppData = function () {
@@ -49,6 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     AppData.prototype.start = function () {
+        allTextInputsData = document.querySelectorAll('.data input[type=text]');
         allTextInputsData.forEach(function (item) {
             item.disabled = true;
         });
@@ -93,6 +94,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
     AppData.prototype.getExpInc = function () {
+        incomeItems = document.querySelectorAll('.income-items');
+        expensesItems = document.querySelectorAll('.expenses-items');
         const count = (item) => {
             const startStr = item.className.split('-')[0];
             const itemTitle = item.querySelector(`.${startStr}-title`).value;
@@ -116,7 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
         const incomes = (item) => {
-            item = item.trim();
+            item = item.value.trim();
             if (item !== '') {
                 this.addIncome.push(item);
             }
@@ -196,10 +199,13 @@ document.addEventListener('DOMContentLoaded', () => {
         this.expensesMonth = 0;
 
         calcBtn.style.display = 'block';
+        calcBtn.setAttribute('disabled', 'true');
         cancelBtn.style.display = 'none';
         depositCheckBox.checked = false;
         addExpensesBtn.removeAttribute('disabled');
+        addExpensesBtn.style.display = 'block';
         addAdditionalIncomeBtn.removeAttribute('disabled');
+        addAdditionalIncomeBtn.style.display = 'block';
         periodSelect.value = '0';
         const periodAmount = document.querySelector('.period-amount');
         periodAmount.innerHTML = periodSelect.value;
